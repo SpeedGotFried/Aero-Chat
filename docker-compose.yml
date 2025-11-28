@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./chat-backend
+      dockerfile: Dockerfile
+    container_name: chat-backend
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app-net
+
+  frontend:
+    build:
+      context: ./chat-frontend
+      dockerfile: Dockerfile
+    container_name: chat-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - app-net
+
+  db:
+    image: postgres:15
+    container_name: chat-db
+    env_file:
+      - .env
+    volumes:
+      - chat_pgdata:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+  redis:
+    image: redis:7
+    container_name: chat-redis
+    networks:
+      - app-net
+
+volumes:
+  chat_pgdata:
+
+networks:
+  app-net:
+    driver: bridge
