@@ -240,18 +240,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open source and available under the MIT License.
 
-## 👨‍💻 Author
-
-Built with ❤️ by [Your Name]
-
 ## 🙏 Acknowledgments
 
 - Socket.IO for real-time communication
 - React team for the amazing framework
 - Docker for containerization
 - PostgreSQL and Redis communities
+
 # Aero-Chat
-# Aero-Chat
-# Aero-Chat
-# Aero-Chat
-# Aero-Chat
+
